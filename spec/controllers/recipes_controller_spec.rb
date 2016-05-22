@@ -9,7 +9,8 @@ describe RecipesController do
       Recipe.create!(name: 'Potatoes Au Gratin')
       Recipe.create!(name: 'Baked Brussel Sprouts')
 
-      xhr :get, :index, format: :json, keywords: keywords
+      # xhr :get, :index, format: :json, params: { keywords: keywords }
+      get :index, xhr: true, format: :json, params: { keywords: keywords }
     end
 
     subject(:results) { JSON.parse(response.body) }
